@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:service.properties" />
+    </bean>
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="protocol" value="${email.protocol}" />
+        <property name="host" value="${email.host}" />
+        <property name="port" value="${email.port}" />
+        <property name="username" value="${emali.username}" />
+        <property name="password" value="${email.password}" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.${email.auth}.auth">${email.auth}</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="accountEmailService" class="com.chen.mvnbook.account.email.AccountEmailServiceImpl">
+        <property name="javaMailSender" ref="javaMailSender" />
+        <property name="systemEmail" value="${email.systemEmail}" />
+    </bean>
+</beans>
