@@ -1,37 +1,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.chen.mvnbook.account</groupId>
+
+    <parent>
+        <groupId>com.chen.mvnbook.account</groupId>
+        <artifactId>account-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../account-parent/pom.xml</relativePath>
+    </parent>
+
     <artifactId>account-email</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-
     <name>Account Email</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <springframework.version>4.2.1.RELEASE</springframework.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
@@ -41,8 +37,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.7</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.icegreen</groupId>
@@ -65,47 +59,12 @@
 
     <build>
         <plugins>
-            <!-- 日志乱码解决方法 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.7.2</version>
-                <configuration>
-                    <forkMode>once</forkMode>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                    <systemProperties>
-                        <property>
-                            <name>net.sourceforge.cobertura.datafile</name>
-                            <value>target/cobertura/cobertura.ser</value>
-                        </property>
-                    </systemProperties>
-                </configuration>
-            </plugin>
             <!-- 创建项目的源码包 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-            <!-- 编译1.5版本的源文件，生成与JVM1.5兼容的字节码文件 -->
-<!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>-->
+
             <!-- 在POM中对插件在不同生命阶段执行不同任务 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
