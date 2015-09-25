@@ -13,6 +13,7 @@
     <modules>
         <module>../account-email</module>
         <module>../account-persist</module>
+        <module>../account-captcha</module>
     </modules>
 
     <properties>
@@ -38,15 +39,6 @@
             <snapshots><enabled>true</enabled></snapshots>
         </pluginRepository>
     </pluginRepositories>
-<!--    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>Nexus</name>
-            <url>http://localhost:8081/nexus/content/groups/public/</url>
-            <releases><enabled>true</enabled></releases>
-            <snapshots><enabled>true</enabled></snapshots>
-        </pluginRepository>
-    </pluginRepositories>-->
 
     <!-- 部署项目到私服 -->
     <distributionManagement>
