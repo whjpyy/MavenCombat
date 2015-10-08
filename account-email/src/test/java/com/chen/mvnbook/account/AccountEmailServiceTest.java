@@ -26,7 +26,6 @@ public class AccountEmailServiceTest {
     @Before
     public void startMailServer(){
         greenMail = new GreenMail(ServerSetup.SMTP);
-        greenMail.setUser("youzeng.chen@maesinfo.cn", "cyz123654");
         greenMail.start();
     }
 
@@ -37,7 +36,7 @@ public class AccountEmailServiceTest {
 
         String subject = "Test Subject";
         String htmlText = "<h3>Test</h3>";
-        accountEmailService.sendMail("youzeng.chen@maesinfo.cn", subject,htmlText);
+        accountEmailService.sendMail("409121961@qq.com", subject,htmlText);
 
         greenMail.waitForIncomingEmail(2000, 1);
 
