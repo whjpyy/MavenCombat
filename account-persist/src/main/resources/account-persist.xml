@@ -7,6 +7,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:account-service.properties" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
     </bean>
 
     <bean id="accountPersistService"

@@ -106,6 +106,13 @@ public class AccountPersistServiceImpl implements AccountPersistService {
 
     @Override
     public Account updateAccount(Account account) throws AccountPersistException {
+        if ( readAccount( account.getId() ) != null )
+        {
+            deleteAccount( account.getId() );
+
+            return createAccount ( account );
+        }
+
         return null;
     }
 
