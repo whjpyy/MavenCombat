@@ -59,12 +59,13 @@
                     <artifactId>cargo-maven2-plugin</artifactId>
                     <version>1.0</version>
                     <configuration>
+                        <!-- standalone -->
+                        <!--
                         <container>
                             <containerId>tomcat6x</containerId>
                             <home>D:\Work\Apache\Tomcat\apache-tomcat-6.0.35</home>
                         </container>
-                        <!-- standalone -->
-                        <!--<configuration>
+                        <configuration>
                             <type>standalone</type>
                             <home>${project.build.directory}/tomcat6x</home>
                             <properties>
@@ -73,11 +74,29 @@
                         </configuration>-->
 
                         <!-- existing -->
+<!--                        <container>
+                            <containerId>tomcat6x</containerId>
+                            <home>D:\Work\Apache\Tomcat\apache-tomcat-6.0.35</home>
+                        </container>
                         <configuration>
                             <type>existing</type>
                             <home>D:\Work\Apache\Tomcat\apache-tomcat-6.0.35</home>
                             <properties>
                                 <cargo.jvmargs>-Dfile.encoding=UTF-8</cargo.jvmargs>
+                            </properties>
+                        </configuration>-->
+
+                        <!-- remote -->
+                        <container>
+                            <containerId>tomcat6x</containerId>
+                            <type>remote</type>
+                        </container>
+                        <configuration>
+                            <type>runtime</type>
+                            <properties>
+                                <cargo.remote.username>tomcat</cargo.remote.username>
+                                <cargo.remote.password>tomcat</cargo.remote.password>
+                                <cargo.remote.manager.url>http://localhost:8080/manager</cargo.remote.manager.url>
                             </properties>
                         </configuration>
                     </configuration>
