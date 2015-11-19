@@ -35,13 +35,29 @@
 
     <build>
         <plugins>
+            <!-- maven测试日志乱码解决方法 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.1</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.2</version>
                 <configuration>
-                    <tagBase>https://github.com/whjpyy/MavenCombat/tags</tagBase>
+                    <forkMode>never</forkMode>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
