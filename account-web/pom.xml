@@ -33,11 +33,39 @@
             <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>client-a</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <client.logo>a.jpg</client.logo>
+                <client.theme>red</client.theme>
+            </properties>
+        </profile>
+        <profile>
+            <id>client-b</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <client.logo>b.jpg</client.logo>
+                <client.theme>blue</client.theme>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>account</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
